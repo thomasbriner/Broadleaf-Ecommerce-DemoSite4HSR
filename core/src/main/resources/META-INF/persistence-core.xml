@@ -24,7 +24,9 @@
 
     <persistence-unit name="blPU" transaction-type="RESOURCE_LOCAL">
         <non-jta-data-source>jdbc/web</non-jta-data-source>
+        <class>com.community.core.testing.TestingTime</class>
         <exclude-unlisted-classes/>
+
     </persistence-unit>
     
     <persistence-unit name="blSecurePU" transaction-type="RESOURCE_LOCAL">
