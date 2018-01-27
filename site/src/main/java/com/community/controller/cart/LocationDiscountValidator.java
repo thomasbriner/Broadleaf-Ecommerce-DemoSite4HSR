@@ -6,7 +6,7 @@ import java.io.IOException;
 
 public class LocationDiscountValidator {
 
-    AddressRetriever retriever = new AddressRetriever();
+    AddressRetriever retriever = new AddressRetriever(new HttpImpl());
 
     public boolean isAuthorizedForDiscount(double latitude, double longitude) throws IOException, ParseException {
 
