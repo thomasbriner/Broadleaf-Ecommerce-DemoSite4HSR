@@ -6,14 +6,16 @@
  * We make no guarantees that this code is fit for any purpose. 
  * Visit http://www.pragmaticprogrammer.com/titles/utj2 for more book information.
 ***/
-package com.community.controller.cart;
+package com.community.hsr.testing.address;
 
 public class Address {
-   public final String road;
-   public final String city;
-   public final String state;
-   public final String zip;
-   public final String houseNumber;
+   private final String road;
+   private final String city;
+   private final String state;
+   private final String zip;
+   private final String houseNumber;
+
+   private boolean approved;
 
    public Address(String houseNumber, String road, String city, String state, String zip) {
       this.houseNumber = houseNumber;
@@ -22,7 +24,38 @@ public class Address {
       this.state = state;
       this.zip = zip;
    }
-   
+
+    public void setApproved(boolean approved) {
+        this.approved = approved;
+    }
+
+    public String getRoad() {
+      return road;
+   }
+
+   public String getCity() {
+      return city;
+   }
+
+   public String getState() {
+      return state;
+   }
+
+   public String getZip() {
+      return zip;
+   }
+
+   public boolean isApproved() {
+      return approved;
+   }
+
+   public String getHouseNumber() {
+
+      return houseNumber;
+   }
+
+
+
    @Override
    public String toString() {
       return houseNumber + " " + road + ", " + city + " " + state + " " + zip;

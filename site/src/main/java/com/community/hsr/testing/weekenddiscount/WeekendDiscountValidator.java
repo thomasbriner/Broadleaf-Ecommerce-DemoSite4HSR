@@ -1,4 +1,4 @@
-package com.community.controller.cart;
+package com.community.hsr.testing.weekenddiscount;
 
 /*
  * HSR Hochschule für Technik Rapperswil

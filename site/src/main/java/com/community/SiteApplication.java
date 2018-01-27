@@ -1,6 +1,5 @@
 package com.community;
 
-import com.community.controller.cart.WeekendDiscountOfferServiceImpl;
 import org.broadleafcommerce.common.config.EnableBroadleafSiteAutoConfiguration;
 import org.broadleafcommerce.core.offer.service.OfferService;
 import org.springframework.boot.SpringApplication;

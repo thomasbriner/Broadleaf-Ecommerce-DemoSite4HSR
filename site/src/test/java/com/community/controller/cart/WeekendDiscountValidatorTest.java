@@ -1,12 +1,11 @@
 package com.community.controller.cart;
 
-import org.assertj.core.api.Assertions;
+import com.community.hsr.testing.weekenddiscount.WeekendDiscountValidator;
 import org.hamcrest.core.Is;
 import org.junit.Assert;
 import org.junit.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.Assert.*;
 
 public class WeekendDiscountValidatorTest {
 

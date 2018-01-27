@@ -1,19 +1,20 @@
-package com.community.controller.cart;
+package com.community.hsr.testing.weekenddiscount;
 
+import com.community.hsr.testing.weekenddiscount.ValidatorNotYetInitializedException;
 import com.community.core.testing.TestingTime;
 import org.broadleafcommerce.core.offer.domain.Offer;
 import org.broadleafcommerce.core.offer.service.OfferService;
 import org.broadleafcommerce.core.offer.service.OfferServiceImpl;
 import org.broadleafcommerce.core.order.domain.Order;
-import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Service;
 
-import javax.annotation.Priority;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+
+import com.community.hsr.testing.weekenddiscount.WeekendDiscountValidator;
 
 
 @Service("weekendOfferService")

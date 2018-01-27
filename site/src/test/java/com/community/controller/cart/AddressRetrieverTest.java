@@ -10,9 +10,11 @@ package com.community.controller.cart;
 
 import java.io.*;
 
+import com.community.hsr.testing.address.Address;
+import com.community.hsr.testing.address.AddressRetriever;
+import com.community.hsr.testing.address.util.Http;
 import org.json.simple.parser.*;
 import org.junit.*;
-import org.mockito.*;
 
 import static org.hamcrest.CoreMatchers.*;
 import static org.junit.Assert.*;
@@ -44,10 +46,10 @@ public class AddressRetrieverTest {
 
         Address address = retriever.retrieve(38.0, -104.0);
 
-        assertThat(address.houseNumber, equalTo("324"));
-        assertThat(address.road, equalTo("North Tejon Street"));
-        assertThat(address.city, equalTo("Colorado Springs"));
-        assertThat(address.state, equalTo("Colorado"));
-        assertThat(address.zip, equalTo("80903"));
+        assertThat(address.getHouseNumber(), equalTo("324"));
+        assertThat(address.getRoad(), equalTo("North Tejon Street"));
+        assertThat(address.getCity(), equalTo("Colorado Springs"));
+        assertThat(address.getState(), equalTo("Colorado"));
+        assertThat(address.getZip(), equalTo("80903"));
     }
 }

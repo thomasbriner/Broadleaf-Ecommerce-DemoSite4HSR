@@ -1,5 +1,8 @@
-package com.community.controller.cart;
+package com.community.hsr.testing.locationdiscount;
 
+import com.community.hsr.testing.address.Address;
+import com.community.hsr.testing.address.AddressRetriever;
+import com.community.hsr.testing.address.util.HttpImpl;
 import org.json.simple.parser.ParseException;
 
 import java.io.IOException;
