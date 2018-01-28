@@ -60,4 +60,29 @@ public class Address {
    public String toString() {
       return houseNumber + " " + road + ", " + city + " " + state + " " + zip;
    }
+
+
+   @Override
+   public boolean equals(Object o) {
+      if (this == o) return true;
+      if (o == null || getClass() != o.getClass()) return false;
+
+      Address address = (Address) o;
+
+      if (!road.equals(address.road)) return false;
+      if (!city.equals(address.city)) return false;
+      if (!state.equals(address.state)) return false;
+      if (!zip.equals(address.zip)) return false;
+      return houseNumber.equals(address.houseNumber);
+   }
+
+   @Override
+   public int hashCode() {
+      int result = road.hashCode();
+      result = 31 * result + city.hashCode();
+      result = 31 * result + state.hashCode();
+      result = 31 * result + zip.hashCode();
+      result = 31 * result + houseNumber.hashCode();
+      return result;
+   }
 }

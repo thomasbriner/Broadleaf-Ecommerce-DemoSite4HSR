@@ -11,7 +11,16 @@ public class AddressHistoryChain {
         this.addressList = new ArrayList<>();
     }
 
+    public AddressHistoryChain(Address address) {
+        this();
+        this.addAddress(address);
+    }
+
     public void addAddress(Address address){
         this.addressList.add(address);
+    }
+
+    public List<Address> getAddressList() {
+        return addressList;
     }
 }
