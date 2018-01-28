@@ -4,7 +4,7 @@
  * Module Software Testing
  * 
  * Thomas Briner, thomas.briner@gmail.com
- */package com.community.controller.cart;
+ */package com.community.hsr.testing.weekenddiscount;
 
 import java.util.Calendar;
 import java.util.Date;

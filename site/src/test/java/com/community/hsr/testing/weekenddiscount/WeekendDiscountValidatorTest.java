@@ -1,6 +1,5 @@
-package com.community.controller.cart;
+package com.community.hsr.testing.weekenddiscount;
 
-import com.community.hsr.testing.weekenddiscount.WeekendDiscountValidator;
 import org.hamcrest.core.Is;
 import org.junit.Assert;
 import org.junit.Test;
