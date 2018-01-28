@@ -14,7 +14,7 @@ import java.util.Date;
  * 
  * @author Thomas Briner, thomas.briner@gmail.com
  */
-public class DateFactory {
+class DateFactory {
 
 	/**
 	 * Utility Method for creating a java.util.Date-
@@ -33,8 +33,8 @@ public class DateFactory {
 	 *            The desired second
 	 * @return The created date
 	 */
-	public static Date createDate(int year, int month, int day, int hour,
-			int minute, int second) {
+	static Date createDate(int year, int month, int day, int hour,
+						   int minute, int second) {
 		Calendar calendar = Calendar.getInstance();
 		calendar.set(Calendar.YEAR, year);
 

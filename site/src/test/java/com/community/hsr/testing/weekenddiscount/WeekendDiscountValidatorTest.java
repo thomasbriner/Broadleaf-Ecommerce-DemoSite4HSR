@@ -8,7 +8,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 public class WeekendDiscountValidatorTest {
 
-    WeekendDiscountValidator validator = new WeekendDiscountValidator();
+    private WeekendDiscountValidator validator = new WeekendDiscountValidator();
 
     @Test
     public void isAuthorizedForDiscount() throws Exception {

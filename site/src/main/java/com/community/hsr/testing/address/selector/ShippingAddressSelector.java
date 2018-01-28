@@ -9,7 +9,7 @@ import java.util.function.Predicate;
 
 public class ShippingAddressSelector {
 
-    public static Address INTERNAL_ADDRESS = new Address("internal", "internal", "internal", "internal", "internal");
+    public static final Address INTERNAL_ADDRESS = new Address("internal", "internal", "internal", "internal", "internal");
 
     public Optional<Address> selectShippingAddress(CustomerForShipping customer, boolean hasToBeApproved) {
         if (customer.isInternalCustomer()) {

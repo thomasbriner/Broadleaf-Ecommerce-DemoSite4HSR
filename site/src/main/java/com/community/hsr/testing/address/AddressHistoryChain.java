@@ -5,7 +5,7 @@ import java.util.List;
 
 public class AddressHistoryChain {
 
-    private List<Address> addressList;
+    private final List<Address> addressList;
 
     public AddressHistoryChain() {
         this.addressList = new ArrayList<>();
