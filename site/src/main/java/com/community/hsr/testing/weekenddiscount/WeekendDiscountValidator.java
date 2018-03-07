@@ -20,7 +20,13 @@ public class WeekendDiscountValidator {
     private static final Log LOG = LogFactory
             .getLog(WeekendDiscountValidator.class);
 
+    private Integer toBeInitialized = new Integer(42);
+
     public WeekendDiscountValidator() {
+
+    }
+
+    public WeekendDiscountValidator(int i){
 
     }
 
@@ -89,6 +95,7 @@ public class WeekendDiscountValidator {
 
                     }
                 } else {
+
                     // otherwise we have run out of this month
                     if (nofSaturdaysUpToNow < this.weekendNumber) {
                         LOG.info("Not enough Saturdays for this number of weekends("

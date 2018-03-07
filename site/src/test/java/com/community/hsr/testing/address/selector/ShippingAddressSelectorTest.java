@@ -2,13 +2,17 @@ package com.community.hsr.testing.address.selector;
 
 import com.community.hsr.testing.address.Address;
 import com.community.hsr.testing.address.AddressHistoryChain;
-import org.junit.Test;
+import org.assertj.core.api.Assert;
+import org.junit.jupiter.api.Test;
 
 import java.util.Optional;
 
 import static com.community.hsr.testing.address.selector.ShippingAddressSelector.INTERNAL_ADDRESS;
+import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.Is.is;
-import static org.junit.Assert.*;
+
+import static org.assertj.core.api.Assertions.*;
+
 
 public class ShippingAddressSelectorTest {
 
@@ -21,12 +25,23 @@ public class ShippingAddressSelectorTest {
     public static final String NEW_APPROVED_DEFAULT_CITY = "NewApprovedDefaultCity";
 
     @Test
+    public void onlyApprovedAddressIsTakenIfRestricted() throws Exception {
+        test()
+                .addApprovedDefaultAddress()
+                .addUnapprovedDefaultAddress()
+                .useOnlyApprovedAddresses()
+                .run()
+                .assertApprovedDefaultAddressIsTaken();
+    }
+
+    @Test
     public void internalAddressShouldBeChosenForInternalCustomer() {
         test()
                 .setInternalCustomer()
                 .run()
                 .assertInternalAddressIsSelected();
     }
+
     @Test
     public void companyAddressIsChosenIfCustomerIsAssociatedWithCompany() {
         test()
@@ -53,15 +68,6 @@ public class ShippingAddressSelectorTest {
                 .assertShippingAddressIsSelected();
     }
 
-    @Test
-    public void onlyApprovedAddressIsTakenIfRestricted() throws Exception {
-        test()
-                .addApprovedDefaultAddress()
-                .addUnapprovedDefaultAddress()
-                .useOnlyApprovedAddresses()
-                .run()
-                .assertApprovedDefaultAddressIsTaken();
-    }
 
     @Test
     public void unapprovedAddressIsTakenIfNotRestricted() throws Exception {
@@ -90,6 +96,28 @@ public class ShippingAddressSelectorTest {
                 .assertNewApprovedDefaultAddressIsTaken();
     }
 
+
+    @Test
+    public void onlyApprovedAddressIsTakenIfRestricted_BadExample() throws Exception {
+        ShippingAddressSelector shippingAddressSelector = new ShippingAddressSelector();
+
+        AddressHistoryChain addressHistoryChain = new AddressHistoryChain();
+        Address approvedAddress = new Address("13", "ApprovedRoad", "ApprovedCity", "ApprovedState", "4242");
+        approvedAddress.setApproved(true);
+        addressHistoryChain.addAddress(approvedAddress);
+
+        Address unapprovedAddress = new Address("13", "UnapprovedRoad", "UnapprovedCity", "UnapprovedState", "4242");
+        unapprovedAddress.setApproved(false);
+        addressHistoryChain.addAddress(unapprovedAddress);
+
+        CustomerForShipping customer = new CustomerForShipping(addressHistoryChain);
+        customer.setInternalCustomer(false);
+
+        Optional<Address> selectedShippingAddress = shippingAddressSelector.selectShippingAddress(customer, true);
+        org.junit.Assert.assertThat(selectedShippingAddress.isPresent(), is(true));
+        org.junit.Assert.assertThat(selectedShippingAddress.get().getCity(), is("ApprovedCity"));
+
+    }
 
 
     private TestBuilder test() {
@@ -165,6 +193,7 @@ public class ShippingAddressSelectorTest {
                     .build());
             return this;
         }
+
         public TestBuilder useOnlyApprovedAddresses() {
             hasToBeApproved = true;
             return this;

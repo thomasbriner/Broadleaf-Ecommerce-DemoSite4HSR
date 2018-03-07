@@ -6,9 +6,11 @@
  * We make no guarantees that this code is fit for any purpose. 
  * Visit http://www.pragmaticprogrammer.com/titles/utj2 for more book information.
 ***/
-package com.community.hsr.testing.address.util;
+package com.community.hsr.testing.address;
 
 import java.io.*;
+
+import com.community.hsr.testing.address.util.Http;
 import org.apache.http.*;
 import org.apache.http.client.methods.*;
 import org.apache.http.impl.client.*;
@@ -18,6 +20,10 @@ public class HttpImpl implements Http {
    public String get(String url) throws IOException {
       CloseableHttpClient client = HttpClients.createDefault();
       HttpGet request = new HttpGet(url);
+      return executeRequest(client, request);
+   }
+
+   String executeRequest(CloseableHttpClient client, HttpGet request) throws IOException {
       CloseableHttpResponse response = client.execute(request);
       try {
          HttpEntity entity = response.getEntity();
