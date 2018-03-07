@@ -9,10 +9,11 @@ package ch.testing.selenium.helloworld;
 
 import java.util.concurrent.TimeUnit;
 
+import org.assertj.core.api.Assert;
+import org.hamcrest.MatcherAssert;
 import org.hamcrest.core.Is;
-import org.junit.Assert;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.By.ByLinkText;
 import org.openqa.selenium.WebDriver;
@@ -46,7 +47,7 @@ public class HelloWorldHeatClinic {
 		return PageFactory.initElements(driver, HotSaucesPage.class);
 	}
 	
-	@Before
+	@BeforeEach
 	public void setup() {
 		//driver = new HtmlUnitDriver();
 
@@ -67,14 +68,14 @@ public class HelloWorldHeatClinic {
 		driver.get("localhost:8080");
 
 		// check if the home page is loaded
-		Assert.assertThat("Should be home page of heat clinic", driver.getTitle(),
+		MatcherAssert.assertThat("Should be home page of heat clinic", driver.getTitle(),
 				Is.is("Broadleaf Demo - Heat Clinic"));
 
 		// now go to "Hot Sauces"
 		driver.findElement(By.xpath("//nav//a[contains(@href,'/hot-sauces')]")).click();
 
 		// and check the price of the green ghost sauce: should be $11.99
-		Assert.assertThat("$11.99", driver.getTitle(),
+		MatcherAssert.assertThat("$11.99", driver.getTitle(),
 				Is.is("Broadleaf Demo - Heat Clinic"));
 		
 

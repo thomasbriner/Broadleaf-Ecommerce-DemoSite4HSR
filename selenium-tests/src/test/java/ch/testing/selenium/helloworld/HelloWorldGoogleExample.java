@@ -8,8 +8,8 @@
 package ch.testing.selenium.helloworld;
 
 import ch.testing.selenium.weekenddiscount.Constants;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -25,7 +25,7 @@ public class HelloWorldGoogleExample implements Constants{
 
 	private WebDriver driver;
 
-	@Before
+	@BeforeEach
 	public void setup() {
 		// Create a new instance of the html unit driver
 		//driver = new HtmlUnitDriver();
